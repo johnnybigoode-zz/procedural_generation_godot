@@ -173,3 +173,16 @@ func carve_path(pos1, pos2):
 		Map.set_cell(y_x.x, y, 0)
 		Map.set_cell(y_x.x+x_diff, y, 0)
 	
+func find_start_room():
+	var min_x = INF
+	for room in $Rooms.get_children():
+		if room.position.x < min_x:
+			start_room = room
+			min_x = room.position.x
+
+func find_end_room():
+	var max_x = -INF
+	for room in $Rooms.get_children():
+		if room.position.x > max_x:
+			end_room = room
+			max_x = room.position.x
