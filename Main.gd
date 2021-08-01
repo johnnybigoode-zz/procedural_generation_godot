@@ -1,6 +1,7 @@
 extends Node2D
 
 var Room = preload("res://Room.tscn")
+var Player = preload("res://Character.tscn")
 onready var Map = $TileMap
 
 var tile_size = 32
