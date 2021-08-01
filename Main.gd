@@ -2,6 +2,7 @@ extends Node2D
 
 var Room = preload("res://Room.tscn")
 var Player = preload("res://Character.tscn")
+var font = preload("res://assets/RobotoBold120.tres")
 onready var Map = $TileMap
 
 var tile_size = 32
@@ -12,6 +13,11 @@ var hspread = 400 #how horizontal should be the rooms - in pixels
 var cull = 0.5 #percent of rooms to be removed
 
 var path # AStar pathfinding object
+var start_room = null
+var end_room = null
+var play_mode = null
+var player = null
+
 func _ready():
 	randomize()
 	make_rooms()
