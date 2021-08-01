@@ -47,9 +47,9 @@ func make_rooms():
 
 func _draw():
 	if start_room:
-		draw_string(font, start_room.position - Vector2(125,0),"start",Color(3,4,8))
+		draw_string(font, start_room.position - Vector2(125,0),"start",Color(3,4,8))		
 	if end_room:
-		draw_string(font, end_room.position - Vector2(125,0),"end",Color(3,4,8))
+		draw_string(font, end_room.position - Vector2(125,0),"end",Color(3,4,8))		
 	if play_mode:
 		return 
 	for room in $Rooms.get_children():
@@ -80,13 +80,11 @@ func _input(event):
 		end_room = null
 		make_rooms()
 	if event.is_action_pressed('ui_focus_next'):
-		make_map()
-		find_start_room()
-		find_end_room()
+		make_map()		
 	if event.is_action_pressed('ui_cancel'):
 		player = Player.instance()
 		add_child(player)
-		player.position = start_room.position - Vector2(75,0)
+		player.position = start_room.position
 		play_mode = true
 	
 func find_mst(nodes):
@@ -115,6 +113,8 @@ func find_mst(nodes):
 func make_map():
 	#create TileMap from generated rooms and path
 	Map.clear()
+	find_start_room()
+	find_end_room()
 	
 	#fill tilemap with walls, then carve empty rooms
 	var full_rect = Rect2()
@@ -183,6 +183,7 @@ func find_start_room():
 		if room.position.x < min_x:
 			start_room = room
 			min_x = room.position.x
+	print(start_room.position)
 
 func find_end_room():
 	var max_x = -INF
@@ -190,3 +191,4 @@ func find_end_room():
 		if room.position.x > max_x:
 			end_room = room
 			max_x = room.position.x
+	print(end_room.position)
