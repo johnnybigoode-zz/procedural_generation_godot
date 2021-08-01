@@ -70,12 +70,22 @@ func _process(delta):
 	
 func _input(event):
 	if event.is_action_pressed('ui_select'):
+		if play_mode:
+			player.queue_free()
+			play_mode = false
 		for n in $Rooms.get_children():
 			n.queue_free()
 		path = null
+		start_room = null
+		end_room = null
 		make_rooms()
 	if event.is_action_pressed('ui_focus_next'):
 		make_map()
+	if event.is_action_pressed('ui_cancel'):
+		player = Player.instance()
+		add_child(player)
+		player.position = start_room.position
+		play_mode = true
 	
 func find_mst(nodes):
 	# Prim's algorithm
