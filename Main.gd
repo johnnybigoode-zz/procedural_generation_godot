@@ -81,10 +81,12 @@ func _input(event):
 		make_rooms()
 	if event.is_action_pressed('ui_focus_next'):
 		make_map()
+		find_start_room()
+		find_end_room()
 	if event.is_action_pressed('ui_cancel'):
 		player = Player.instance()
 		add_child(player)
-		player.position = start_room.position
+		player.position = start_room.position - Vector2(75,0)
 		play_mode = true
 	
 func find_mst(nodes):
@@ -152,8 +154,7 @@ func make_map():
 				carve_path(start, end)
 			corridors.append(p)
 			
-	find_start_room()
-	find_end_room()
+	
 			
 func carve_path(pos1, pos2):
 	#carve a path between two points
