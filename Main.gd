@@ -84,7 +84,7 @@ func _input(event):
 	if event.is_action_pressed('ui_cancel'):
 		player = Player.instance()
 		add_child(player)
-		player.position = start_room.position
+		player.position = start_room.position + Vector2(start_room.size.x/2, start_room.size.y/2)
 		play_mode = true
 	
 func find_mst(nodes):
