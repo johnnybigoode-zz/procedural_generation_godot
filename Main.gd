@@ -48,9 +48,9 @@ func make_rooms():
 
 func _draw():
 	if start_room:
-		draw_string(font, start_room.position - Vector2(125,0),"start",Color(3,4,8))		
+		draw_string(font, start_room - Vector2(125,0),"start",Color(3,4,8))
 	if end_room:
-		draw_string(font, end_room.position - Vector2(125,0),"end",Color(3,4,8))		
+		draw_string(font, end_room - Vector2(125,0),"end",Color(3,4,8))		
 	if play_mode:
 		return 
 	for room in $Rooms.get_children():
@@ -128,8 +128,9 @@ func make_map():
 	for room in $Rooms.get_children():
 		var r = Rect2(room.position - room.size, 
 			room.get_node("CollisionShape2D").shape.extents * 2)
-			
 		full_rect = full_rect.merge(r)
+		room.queue_free()
+		
 	var topleft = Map.world_to_map(full_rect.position)
 	var bottomright = Map.world_to_map(full_rect.end)
 	for x in range(topleft.x, bottomright.x):
@@ -189,7 +190,7 @@ func find_start_room():
 	for room in $Rooms.get_children():
 		if room.position.x < min_x:
 			start_room = room.position
-			min_x = room.position.x			
+			min_x = room.position.x
 	print("start room position:")
 	print(get_node("/root/Main/TileMap").world_to_map(start_room))
 
