@@ -46,9 +46,15 @@ func make_rooms():
 	path = find_mst(room_positions)
 
 func _draw():
+	if start_room:
+		draw_string(font, start_room.position - Vector2(125,0),"start",Color(3,4,8))
+	if end_room:
+		draw_string(font, end_room.position - Vector2(125,0),"end",Color(3,4,8))
+	if play_mode:
+		return 
 	for room in $Rooms.get_children():
 		draw_rect(Rect2(room.position - room.size, room.size * 2),
-			Color(32, 228, 0), false)
+			Color(0, 1, 0), false)
 			
 	if path:
 		for point in path.get_points():
