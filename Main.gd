@@ -39,6 +39,7 @@ func make_rooms():
 			room.queue_free()
 		else:
 			room.mode = RigidBody2D.MODE_STATIC
+			room.collision_layer = 3
 			room_positions.append(Vector3(room.position.x, room.position.y, 0))
 			
 	yield(get_tree(), 'idle_frame')
