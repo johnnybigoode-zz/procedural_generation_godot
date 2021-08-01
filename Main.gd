@@ -88,7 +88,9 @@ func _input(event):
 	if event.is_action_pressed('ui_cancel'):
 		player = Player.instance()
 		add_child(player)
-		player.position = start_room.position + Vector2(start_room.size.x/2, start_room.size.y/2)
+		print("start room position and player spawn:")
+		print(get_node("/root/Main/TileMap").world_to_map(start_room))
+		player.position = start_room
 		play_mode = true
 	
 func find_mst(nodes):
