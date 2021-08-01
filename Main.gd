@@ -69,6 +69,11 @@ func _process(delta):
 	update()
 	
 func _input(event):
+	if event is InputEventMouseButton:
+		print("Mouse Click/Unclick at: ", event.position)
+		print("Viewport position", get_viewport().get_mouse_position())
+		print("Node thing",  self.to_local(get_viewport().get_mouse_position()))
+	
 	if event.is_action_pressed('ui_select'):
 		if play_mode:
 			player.queue_free()
