@@ -71,8 +71,7 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton:
 		print("Mouse Click/Unclick at: ", event.position)
-		print("Viewport position", get_viewport().get_mouse_position())
-		print("Node thing",  self.to_local(get_viewport().get_mouse_position()))
+		print("Node thing",get_node("/root/Main/TileMap").world_to_map(event.position))
 	
 	if event.is_action_pressed('ui_select'):
 		if play_mode:
