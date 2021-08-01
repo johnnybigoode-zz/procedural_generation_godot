@@ -17,7 +17,7 @@ func _input(event):
 		$Camera2D.zoom = $Camera2D.zoom + Vector2(0.1, 0.1)
 
 func print_pos():
-	print(self.position)
+	print(get_node("/root/Main/TileMap").world_to_map(self.position))
 
 func get_input():	
 	velocity = Vector2()

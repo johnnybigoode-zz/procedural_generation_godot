@@ -187,8 +187,8 @@ func find_start_room():
 	for room in $Rooms.get_children():
 		if room.position.x < min_x:
 			start_room = room
-			min_x = room.position.x
-	print(start_room.position)
+			min_x = room.position.x			
+	print(Map.world_to_map(start_room.position))
 
 func find_end_room():
 	var max_x = -INF
@@ -196,4 +196,4 @@ func find_end_room():
 		if room.position.x > max_x:
 			end_room = room
 			max_x = room.position.x
-	print(end_room.position)
+	print(Map.world_to_map(end_room.position))
