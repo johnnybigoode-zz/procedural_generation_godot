@@ -152,6 +152,9 @@ func make_map():
 				carve_path(start, end)
 			corridors.append(p)
 			
+	find_start_room()
+	find_end_room()
+			
 func carve_path(pos1, pos2):
 	#carve a path between two points
 	var x_diff = sign(pos2.x - pos1.x)
