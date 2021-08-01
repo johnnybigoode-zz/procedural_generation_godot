@@ -185,14 +185,16 @@ func find_start_room():
 	var min_x = INF
 	for room in $Rooms.get_children():
 		if room.position.x < min_x:
-			start_room = room
+			start_room = room.position
 			min_x = room.position.x			
-	print(Map.world_to_map(start_room.position))
+	print("start room position:")
+	print(get_node("/root/Main/TileMap").world_to_map(start_room))
 
 func find_end_room():
 	var max_x = -INF
 	for room in $Rooms.get_children():
 		if room.position.x > max_x:
-			end_room = room
+			end_room = room.position
 			max_x = room.position.x
-	print(Map.world_to_map(end_room.position))
+	print("end room position:")
+	print(get_node("/root/Main/TileMap").world_to_map(end_room))
